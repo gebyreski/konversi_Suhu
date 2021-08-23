@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KONVERSI SUHU</title>
+    <link rel="stylesheet" href="./style.css">
+   
+</head>
+<body>
+<div class="satu">
+        <h3>KONVERSI SUHU</h3>
+    
+    <select name="from" id="from" onchange="select()">
+        <option value="farenheit">Farenheit</option>
+        <option value="celcius">Celcius</option>
+        <option value="reamur">Reamur</option>
+    </select>
+    
+    <select name="to" id="to" onchange="select()">
+        <option value="farenheit">Farenheit</option>
+        <option value="celcius">Celcius</option>
+        <option value="reamur">Reamur</option>
+    </select>
+    
+    <div class="kotak">
+        <input type="number" id="num1"  onkeypress="validate(event)" onkeyup="conv()">   
+    <p>=</p>
+        <input type="number" id="result" disabled>
+    </div>
+
+    <div>
+        <input type="text" id="color">
+        <button type="button" onclick="ganti()">Ganti Warna</button>
+    </div>
+</div>
+
+
+
+</body>
+
+
+<script src="./suhu.js"></script>
+<script>
+  function ganti() {
+      document.body.style.backgroundColor =
+        document.getElementById("color").value;
+    }
+
+    function select() {
+     document.getElementById("num1").value = "";
+     document.getElementById("result").value = "";
+   }
+
+   const converty = new Suhu();
+   function conv(){
+     if (document.getElementById("from").value == "celcius" && document.getElementById("to").value == "celcius"){
+       const res = converty.CelciustoCelcius(
+         parseInt(document.getElementById("num1").value)
+       );
+       document.getElementById("result").value=res;
+     }
+     if (document.getElementById("from").value == "celcius" && document.getElementById("to").value == "farenheit"){
+       const res = converty.CelciustoFahrenheit(
+         parseInt(document.getElementById("num1").value)
+       );
+       document.getElementById("result").value=res;
+     }
+     if (document.getElementById("from").value == "celcius" && document.getElementById("to").value == "reamur"){
+       const res = converty.CelciustoReamur(
+         parseInt(document.getElementById("num1").value)
+       );
+       document.getElementById("result").value=res;
+     }
+     if (document.getElementById("from").value == "farenheit" && document.getElementById("to").value == "celcius"){
+       const res = converty.FahrenheittoCelcius(
+         parseInt(document.getElementById("num1").value)
+       );
+       document.getElementById("result").value=res;
+     }
+     if (document.getElementById("from").value == "farenheit" && document.getElementById("to").value == "farenheit"){
+       const res = converty.FahrenheittoFahrenheit(
+         parseInt(document.getElementById("num1").value)
+       );
+       document.getElementById("result").value=res;
+     }
+     if (document.getElementById("from").value == "farenheit" && document.getElementById("to").value == "reamur"){
+       const res = converty.FahrenheittoReamur(
+         parseInt(document.getElementById("num1").value)
+       );
+       document.getElementById("result").value=res;
+     }
+     if (document.getElementById("from").value == "reamur" && document.getElementById("to").value == "celcius"){
+       const res = converty.ReamurtoCelcius(
+         parseInt(document.getElementById("num1").value)
+       );
+       document.getElementById("result").value=res;
+     }
+     if (document.getElementById("from").value == "reamur" && document.getElementById("to").value == "farenheit"){
+       const res = converty.ReamurtoFahrenheit(
+         parseInt(document.getElementById("num1").value)
+       );
+       document.getElementById("result").value=res;
+     }
+     if (document.getElementById("from").value == "reamur" && document.getElementById("to").value == "reamur"){
+       const res = converty.ReamurtoReamur(
+         parseInt(document.getElementById("num1").value)
+       );
+       document.getElementById("result").value=res;
+     }
+   }
+</script>
+</html>
